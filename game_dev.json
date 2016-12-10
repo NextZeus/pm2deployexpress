@@ -1,0 +1,67 @@
+{
+  "version": "0.0.0.1",
+  "base_url": "http://localhost:",
+  "res_url": "http://host/%GAME_ENV",
+  "enable_session"  : true,
+  "mongo": {
+    "server_url": "mongodb://mongo-host1:port,mongo-host2:port/dbname%PORT",
+    "server_opts": {"user":"username%PORT","pass":"password","config": { "autoIndex": false }},
+  },
+  "redis": {
+    "prefix": "express_",
+    "single": {
+      "port": 6379,
+      "host": "127.0.0.1"
+    },
+    "cluster": [
+      {
+        "port": 6380,
+        "host": "express-redis-cls01"
+      },
+      {
+        "port": 6380,
+        "host": "express-redis-cls02"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls03"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls01"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls02"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls03"
+      }
+    ],
+    "cluster_mode": false
+  },
+  "apps": [
+    {
+      "name": "server-%GAME_ENV",
+      "script": "pm2deployexpress/bin/www",
+      "instances": 1,
+      "exec_mode": "fork",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "combine_logs": true,
+      "env": {
+        "PORT": "%PORT",
+        "GAME_CONFIG_SUFFIX": "dev",
+        "GAME_ENV": "%GAME_ENV",
+      }
+    },
+  ],
+  "targets": {
+    "staging": {
+      "server": [4001, 4002],
+    },
+    "alpha": {
+      "server": [4101, 4102, 4103],
+    }
+  }
+}
