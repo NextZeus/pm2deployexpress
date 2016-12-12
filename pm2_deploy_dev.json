@@ -1,0 +1,25 @@
+{
+  "apps": [
+    {
+      "name": "server-%GAME_ENV",
+      "script": "pm2deployexpress/bin/www",
+      "instances": 1,
+      "exec_mode": "fork",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "combine_logs": true,
+      "env": {
+        "PORT": "%PORT",
+        "GAME_CONFIG_SUFFIX": "dev",
+        "GAME_ENV": "%GAME_ENV",
+      }
+    },
+  ],
+  "targets": {
+    "staging": {
+      "server": [4001, 4002],
+    },
+    "alpha": {
+      "server": [4101, 4102, 4103],
+    }
+  }
+}
