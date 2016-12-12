@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "server-%GAME_ENV",
+      "name": "server-%GAME_ENV-%PORT",
       "script": "pm2deployexpress/bin/www",
       "instances": 1,
       "exec_mode": "fork",
@@ -9,8 +9,8 @@
       "combine_logs": true,
       "env": {
         "PORT": "%PORT",
-        "GAME_CONFIG_SUFFIX": "dev",
-        "GAME_ENV": "%GAME_ENV",
+        "GAME_ENV":"%GAME_ENV",
+        "CONFIG_SUFFIX": "dev",
       }
     },
   ],

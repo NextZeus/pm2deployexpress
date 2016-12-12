@@ -1,0 +1,40 @@
+{
+  "version": "0.0.0.1",
+  "base_url": "http://localhost:",
+  "res_url": "http://10.0.0.1/%GAME_ENV",
+  "enable_session"  : true,
+  "mongo": {
+    "server_url": "mongodb://mongo-host1:port,mongo-host2:port/express%PORT",
+    "server_opts": {"user":"username%PORT","pass":"password","config": { "autoIndex": false }},
+  },
+  "redis": {
+    "prefix": "express_",
+    "cluster": [
+      {
+        "port": 6380,
+        "host": "express-redis-cls01"
+      },
+      {
+        "port": 6380,
+        "host": "express-redis-cls02"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls03"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls01"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls02"
+      },
+      {
+        "port": 6381,
+        "host": "express-redis-cls03"
+      }
+    ],
+    "cluster_mode": true
+  }
+}

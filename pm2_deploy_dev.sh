@@ -5,7 +5,7 @@
 set -e
 set -o pipefail
 
-if [$# -lt 1]; then
+if [ $# -lt 1 ]; then
     echo "Usage:"
     echo "  sh deploy.sh [target]"
     echo "target:   [staging | alpha ]"
@@ -19,7 +19,7 @@ build_target=$1
 
 #init params
 port=4000
-path_git=${pwd}
+path_git=$(pwd)
 path_config=./game_dev.json
 path_deploy=/data/work/server/${build_target}
 
@@ -36,10 +36,10 @@ echo "deploy begin"
 
 cd ${path_git}
 
-# replace config
+# replace config string
 sed -i '' "s/send_mail_on_error\":false/send_mail_on_error\": true/g" ${path_config}
 #server port
-host_port=8000 
+host_port=8000
 #server ip
 host_ip=10.0.0.1
 #server user
