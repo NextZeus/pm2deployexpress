@@ -1,8 +1,9 @@
 {
   "version": "0.0.0.1",
   "base_url": "http://localhost:",
-  "res_url": "http://10.0.0.1/%GAME_ENV",
+  "res_url": "http://www.17wyx8.com/%GAME_ENV",
   "enable_session"  : true,
+  "send_mail_on_error"  : false,
   "mongo": {
     "server_url": "mongodb://mongo-host1:port,mongo-host2:port/express%PORT",
     "server_opts": {"user":"username","pass":"password","config": { "autoIndex": false }},

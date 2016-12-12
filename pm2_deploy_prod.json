@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "server-prod-4001",
-      "script": "pm2deployexpress/bin/www.js",
+      "script": "Server/bin/www.js",
       "instances": 1,
       "exec_mode": "fork",
       "log_date_format": "YYYY-MM-DD HH:mm Z",
@@ -17,7 +17,7 @@
     },
     {
       "name": "server-prod-4002",
-      "script": "pm2deployexpress/bin/www.js",
+      "script": "Server/bin/www.js",
       "instances": 1,
       "exec_mode": "fork",
       "log_date_format": "YYYY-MM-DD HH:mm Z",

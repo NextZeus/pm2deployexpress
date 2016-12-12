@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # stop shell if error
-
 set -e
 set -o pipefail
 
@@ -36,14 +35,18 @@ echo "deploy begin"
 
 cd ${path_git}
 
-# replace config string
-sed -i '' "s/send_mail_on_error\":false/send_mail_on_error\": true/g" ${path_config}
+
+
 #server port
 host_port=8000
 #server ip
 host_ip=10.0.0.1
 #server user
 host_user_name=root
+
+#修改配置的send_mail_on_error项
+sed -i '' "s/send_mail_on_error\": false/send_mail_on_error\": true/g" ${path_config}
+
 # sync file to server
 rsync -avcrzl --delete-after ./game_dev.json  --exclude ./logs -e 'ssh -p ${host_port}' ${host_user_name}@${host_ip}:${path_deploy}
 

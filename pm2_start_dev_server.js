@@ -14,7 +14,7 @@ var gameConfig,
     pm2Apps={};
 
 /**
- * 根据配置动态生成app 配置
+ * 根据配置env & port 动态生成app配置
  * @param appName
  * @param envName
  * @param port
@@ -41,9 +41,6 @@ function getAppConfig(appName,envName,port){
     return appConfig;
 }
 
-
-
-
 async.waterfall([
     function (cb) {
         if (!game_env) {
@@ -65,6 +62,8 @@ async.waterfall([
             var app = getAppConfig('server-%GAME_ENV-%PORT',game_env,port);
             pm2Apps[app.name] = app;
         }
+
+        console.log('pm2Apps>>>>>',pm2Apps);
 
         cb();
     },
