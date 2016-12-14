@@ -52,6 +52,8 @@ var loadRoutes = function(){
 loadRoutes();
 app.use('/',router);
 
+
+
 process.on('uncaughtException', function (err) {
     console.error('uncaughtException error:',err);
     console.error(err.stack);
