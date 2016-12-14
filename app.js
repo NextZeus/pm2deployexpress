@@ -29,6 +29,19 @@ app.use(function (req, res, next) {
     next();
 });
 
+//middleware
+var forceSSL = function (req, res, next) {
+    console.log('forcessl>>>>>>',req.headers);
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect([ 'https://', req.get('Host'), req.url ].join(''));
+    }
+    return next();
+};
+
+// if (process.env.web_env === 'production') {
+    app.use(forceSSL);
+// }
+
 var router = express.Router();
 
 //auto load routes : post method
@@ -51,7 +64,6 @@ var loadRoutes = function(){
 };
 loadRoutes();
 app.use('/',router);
-
 
 
 process.on('uncaughtException', function (err) {
