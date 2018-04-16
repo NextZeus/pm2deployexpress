@@ -1,5 +1,7 @@
 # 使用pm2 实现自动化的多服务器部署--express application
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NextZeus/pm2deployexpress.svg)](https://greenkeeper.io/)
+
 
 
 在使用express开发游戏服务器的过程中，使用到了pm2来部署服务器， 下面就简单的介绍一下我们是如何使用pm2做到多个环境，多个服务器的自动化部署的。
